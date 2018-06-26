@@ -1,14 +1,29 @@
-service: animalService
+service: colorService
 
 provider:
   name: aws
   runtime: nodejs8.10
+  stage: ${opt:stage, 'dev'}
+  region: us-east-1
 
 functions:
   hello:
     handler: handler.hello
     events:
-      - http: GET colors
+      - http: GET api/v1/colors
+
+custom:
+  domains:
+    xyz-na: xyz-na-api.frogsonic.com
+    integration-oregon: integration-oregon-api.frogsonic.com
+    bigben-bongo: bigben-bongo-api.frogsonic.com
+    dev: dev-api.frogsonic.com
+  customDomain:
+    domainName: ${self:custom.domains.${self:provider.stage}}
+    basePath: colors # This will be prefixed to all routes
+    stage: ${self:provider.stage}
+    createRoute53Record: true
 
 plugins:
+  - serverless-domain-manager
   - serverless-offline

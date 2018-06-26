@@ -3,12 +3,27 @@ service: animalService
 provider:
   name: aws
   runtime: nodejs8.10
+  stage: ${opt:stage, 'dev'}
+  region: us-east-1
 
 functions:
   hello:
     handler: handler.hello
     events:
-      - http: GET animals
+      - http: GET api/v1/animals
+
+custom:
+  domains:
+    xyz-na: xyz-na-api.frogsonic.com
+    integration-oregon: integration-oregon-api.frogsonic.com
+    bigben-bongo: bigben-bongo-api.frogsonic.com
+    dev: dev-api.frogsonic.com
+  customDomain:
+    domainName: ${self:custom.domains.${self:provider.stage}}
+    basePath: animals # This will be prefixed to all routes
+    stage: ${self:provider.stage}
+    createRoute53Record: true
 
 plugins:
+  - serverless-domain-manager
   - serverless-offline

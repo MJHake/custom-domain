@@ -151,7 +151,7 @@ asynckit@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
 
-aws-sdk@^2.228.0:
+aws-sdk@^2.177.0, aws-sdk@^2.228.0:
   version "2.263.1"
   resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.263.1.tgz#217e2459ebff3702cc72260bcafca0bf16edc4cd"
   dependencies:
@@ -1828,6 +1828,13 @@ semver@^5.0.3, semver@^5.1.0:
 semver@~5.0.1:
   version "5.0.3"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.0.3.tgz#77466de589cd5d3c95f138aa78bc569a3cb5d27a"
+
+serverless-domain-manager@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/serverless-domain-manager/-/serverless-domain-manager-2.4.0.tgz#b60bd44035c707957e44d1faa908992f08623f40"
+  dependencies:
+    aws-sdk "^2.177.0"
+    chalk "^2.0.1"
 
 serverless-offline@^3.20.3:
   version "3.25.4"
