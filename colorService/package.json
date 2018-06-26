@@ -1,0 +1,14 @@
+{
+  "name": "color-service",
+  "version": "1.0.0",
+  "scripts": {
+    "deploy": "serverless deploy",
+    "start": "serverless offline start"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "serverless": "^1.26.1",
+    "serverless-offline": "^3.20.3"
+  }
+}

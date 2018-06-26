@@ -1,0 +1,14 @@
+service: animalService
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - http: GET animals
+
+plugins:
+  - serverless-offline
