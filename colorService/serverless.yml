@@ -13,16 +13,17 @@ functions:
       - http: GET api/v1/colors
 
 custom:
-  domains:
-    xyz-na: xyz-na-api.frogsonic.com
-    integration-oregon: integration-oregon-api.frogsonic.com
-    bigben-bongo: bigben-bongo-api.frogsonic.com
-    dev: dev-api.frogsonic.com
+  bool:
+    true: true
+    false: false
+  domainName: ${opt:domain, 'invalid.com'}
+  deployDomain: ${opt:deployDomain, 'false'}
   customDomain:
-    domainName: ${self:custom.domains.${self:provider.stage}}
+    domainName: ${self:custom.domainName}
     basePath: colors # This will be prefixed to all routes
     stage: ${self:provider.stage}
     createRoute53Record: true
+    enabled: ${self:custom.bool.${self:custom.deployDomain}}
 
 plugins:
   - serverless-domain-manager
