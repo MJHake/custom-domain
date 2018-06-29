@@ -7,23 +7,21 @@ provider:
   region: us-east-1
 
 functions:
-  hello:
-    handler: handler.hello
+  list:
+    handler: handler.list
     events:
-      - http: GET api/v1/colors
+      - http: GET api/v1/list
 
 custom:
   bool:
     true: true
     false: false
-  domainName: ${opt:domain, 'invalid.com'}
-  deployDomain: ${opt:deployDomain, 'false'}
   customDomain:
-    domainName: ${self:custom.domainName}
+    domainName: ${opt:domain, 'invalid.com'
     basePath: colors # This will be prefixed to all routes
     stage: ${self:provider.stage}
     createRoute53Record: true
-    enabled: ${self:custom.bool.${self:custom.deployDomain}}
+    enabled: ${self:custom.bool.${opt:enableDomainManager, 'false'}}
 
 plugins:
   - serverless-domain-manager

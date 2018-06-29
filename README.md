@@ -7,10 +7,10 @@ See: https://serverless.com/blog/api-gateway-multiple-services/
 # deploying
 
 ## One time setup to create subdomain in Route53
-serverless create_domain --domain integration-oregon-api.frogsonic.com --deployDomain true
+serverless create_domain --domain ysu-na-service.frogsonic.com --enableDomainManager true
 
 ## Deploy with domain name
-serverless deploy --domain integration-oregon-api.frogsonic.com --deployDomain true
+serverless deploy --domain ysu-na-service.frogsonic.com --enableDomainManager true
 
 # URL's
 
